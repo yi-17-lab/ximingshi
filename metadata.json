@@ -1,0 +1,6 @@
+{
+  "name": "紫微戏命师",
+  "description": "极尽精妙的紫微斗数排盘与流年运势推算系统。支持多语言切换、AI命格分析以及专业的模拟咨询、社区交流。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

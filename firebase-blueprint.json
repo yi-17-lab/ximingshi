@@ -1,0 +1,86 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile holding configuration and membership settings",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "gender": { "type": "string" },
+        "birthYear": { "type": "integer" },
+        "birthMonth": { "type": "integer" },
+        "birthDay": { "type": "integer" },
+        "birthHour": { "type": "string" },
+        "isPremium": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "name", "email", "isPremium", "createdAt"]
+    },
+    "Chart": {
+      "title": "Chart",
+      "description": "Computed birth charts saved by users",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "gender": { "type": "string" },
+        "solarDate": { "type": "string" },
+        "lunarDate": { "type": "string" },
+        "birthHour": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "name", "gender", "solarDate", "lunarDate", "birthHour", "createdAt"]
+    },
+    "ForumPost": {
+      "title": "ForumPost",
+      "description": "Posts in the study community and philosophy discussions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "title": { "type": "string" },
+        "content": { "type": "string" },
+        "likesCount": { "type": "integer" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "userName", "title", "content", "likesCount", "createdAt"]
+    },
+    "Consultation": {
+      "title": "Consultation",
+      "description": "Chat conversations with virtual Zi Wei masters supported by AI",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "masterId": { "type": "string" },
+        "messages": { "type": "array" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "userId", "masterId", "messages", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "Collection of structural user records"
+    },
+    "users/{userId}/charts/{chartId}": {
+      "schema": "Chart",
+      "description": "Collection of calculated charts with private notes"
+    },
+    "forum_posts/{postId}": {
+      "schema": "ForumPost",
+      "description": "Collection of public open-forum postings"
+    },
+    "users/{userId}/consultations/{consultationId}": {
+      "schema": "Consultation",
+      "description": "Collection of interactive AI consulting dialogues"
+    }
+  }
+}
